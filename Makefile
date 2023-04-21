@@ -34,6 +34,9 @@ geth-linux-arm7:
 geth-linux-arm64:
 	env GO111MODULE=on GOARCH=arm64 GOOS=linux go build -ldflags="$(ldflags)" -o build/bin/geth-linux-arm64 ./cmd/geth
 
+geth-linux-amd64:
+	env GO111MODULE=on GOARCH=amd64 GOOS=linux go build -ldflags="$(ldflags)" -o build/bin/geth-linux-amd64 ./cmd/geth
+
 all:
 	$(GORUN) build/ci.go install
 
