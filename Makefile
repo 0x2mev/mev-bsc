@@ -32,7 +32,7 @@ geth-linux-arm7:
 	env GO111MODULE=on GOARCH=arm GOARM=7 GOOS=linux go build -ldflags="$(ldflags)" -o build/bin/geth-linux-arm-7 ./cmd/geth
 
 geth-linux-arm64:
-	env GO111MODULE=on GOARCH=arm64 GOOS=linux go build -ldflags="$(ldflags)" -o build/bin/geth-linux-arm64 ./cmd/geth
+	env GO111MODULE=on CGO_ENABLED=1 CC=$($pwd)/../aarch64-linux-musl-cross/bin/aarch64-linux-musl-gcc GOARCH=arm64 GOOS=linux go build -ldflags="$(ldflags)" -o build/bin/geth-linux-arm64 ./cmd/geth
 
 all:
 	$(GORUN) build/ci.go install
