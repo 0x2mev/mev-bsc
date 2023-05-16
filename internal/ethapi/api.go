@@ -1536,6 +1536,11 @@ func RPCMarshalHeader(head *types.Header) map[string]interface{} {
 	return result
 }
 
+// NewRPCPendingTransaction returns a pending transaction that will serialize to the RPC representation
+func NewRPCPendingTransaction(tx *types.Transaction, current *types.Header, config *params.ChainConfig) *RPCTransaction {
+	return newRPCPendingTransaction(tx, current, config)
+}
+
 // RPCMarshalBlock converts the given block to the RPC output which depends on fullTx. If inclTx is true transactions are
 // returned. When fullTx is true the returned block contains full transaction details, otherwise it will only contain
 // transaction hashes.
